@@ -2,7 +2,7 @@
 
 <div class="collapse navbar-collapse" id="main-nav">
     <ul class="navbar-nav w-auto mx-auto">
-        <li class="nav-item d-block d-md-none">
+        <li class="nav-item d-block">
             <a class="logo-font font-weight-bold nav-link text-black mr-5" href="{% url 'home' %}" id="home-link">
                 Home
             </a>
@@ -15,7 +15,17 @@
                 <a href="" class="dropdown-item">By Date</a>
                 <a href="" class="dropdown-item ">By Time</a>
                 <a href="" class="dropdown-item ">By Room Number</a>
-                <a href="" class="dropdown-item">All Bookings</a>
+                <a href="{% url 'display_bookings' %}" class="dropdown-item">All Bookings</a>
+            </div>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="logo-font font-weight-bold nav-link text-black mr-5" href="#" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Go Back
+            </a>
+            <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
+                <a href="{% url 'add_booking' %}" class="dropdown-item">Go back to Take Booking</a>
+                <a href="{% url 'home' %}" class="dropdown-item ">Go back to Home Page</a>
+                <a href="" class="dropdown-item ">Go back to ...</a>
             </div>
         </li>
     </ul>

@@ -1,0 +1,63 @@
+<!doctype html>
+{% extends "base.html"%}
+{% load static %}
+
+{% block content %}
+    {% for item in BookingItems %}
+    <h2>Restaurant Booking</h2><h4>{{ item.id }}</h4>
+    {% endfor %}
+    <a href="/add_booking"> Create New Booking</a>
+    
+    <table>
+       {% for item in BookingItems %}
+          <tr>
+             <td>Booking Name: {{ item.name }}</td>
+          </tr>
+          <tr>
+            <td>Booking Date: {{ item.date }}</td>
+          </tr>
+          <tr>
+            <td>Booking Time: {{ item.time }}</td>
+          </tr>
+          <tr>
+           <td>Number of Adults: {{ item.adultNum }}</td>
+          </tr>
+          <tr>
+           <td>Number of Children: {{ item.childNum }}</td>
+          </tr>
+          <tr>
+           <td>Number of High Chair req.: {{ item.highChair }}</td>
+          </tr>
+          <tr>
+           <td>Room number: {{ item.roomNum }}</td>
+          </tr>
+          <tr>
+           <td>Comment: {{ item.comment }}</td>
+          </tr>
+          <tr>
+           {% if item.email %}
+           <td>Email: {{ item.email }}</td>
+           {% else %}
+           <td>No email given.</td>
+           {% endif %}
+           <td>
+           
+             <a href="/edit/{{ item.id }}">
+             
+                 <button>Edit</button>
+             </a>
+           
+           </td>
+           <td>
+           
+             <a href="/delete/{{ item.id }}">
+             
+                 <button>Delete</button>
+             </a>
+           
+           </td>
+          </tr>
+       {% endfor %}
+    </table>
+
+{% endblock %}
