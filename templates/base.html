@@ -89,8 +89,8 @@
                             <div class="text-center">
                                 <div><i class="fas fa-book fa-lg"></i></div>
                                 <p class="my-0">
-                                    {% if grand_total %}
-                                        ${{ grand_total|floatformat:2 }}
+                                    {% if booking %}
+                                        ${{ item.id }}
                                     {% else %}
                                         No booking yet
                                     {% endif %}

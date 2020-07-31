@@ -12,18 +12,41 @@
 
 {% endblock %}
 
+
 {% block content %}
-    
-    <h2>Add bookings</h2>
-    
+    <div class="container h-100">
+    {% if request.user.is_authenticated %}
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                 <h4 class="display-5 logo-font text-white">Add bookings</h4>
+    {% load crispy_forms_tags %}
     <form method="POST" action="add_booking">
        {% csrf_token %}
-       {{ form.as_p }} 
+       {{ form|crispy }} 
 
        <div>
           <p>
-          <button type="submit">Add Booking</button>
+          <button type="submit" class="go-to-button btn btn-lg rounded-0 text-uppercase py-3 my-3">Add Booking</button>
           </p>
        </div>
-    </form>
+    </form>   
+                
+    {% else %}
+    <div class="my-5">
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                <h5 class="display-4 logo-font text-black"></h5>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'account_login' %}" class="go-to-button btn btn-lg rounded-0 text-uppercase py-3">Please Log In</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        
+    </div>   
+    {% endif %}  
+    </div>
 {% endblock %}
+</div>
+</div>

@@ -16,26 +16,17 @@
 
 
 
-
-
-
-<div class="socialaccount_ballot">
-
-  <ul class="socialaccount_providers">
+{% load crispy_forms_tags %}
+   <div class="container h-100">
     
-  </ul>
-
-  
-
-</div>
-
-
-
-
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                <h5 class="display-4 logo-font text-black"></h5>
+                 <h2>Log in here or register</h2>
 
 <form class="login" method="POST" action="{% url 'account_login' %}">
   {% csrf_token %}
-  {{ form.as_p }}
+  {{ form|crispy }}
   {% if redirect_field_value %}
   <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
   {% endif %}
@@ -43,5 +34,9 @@
   <button class="primaryAction" type="submit">Sign in!</button>
 </form>
 
+
 {% endblock %}
 
+</div>
+</div>
+</div>

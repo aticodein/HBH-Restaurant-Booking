@@ -83,3 +83,14 @@ body {
         padding-top: 164px;
     }
 }
+
+/* Cerispy forms fields from setting class */
+
+.inputtext {
+    height: auto;
+}
+
+.control-label {
+    background: white;
+    display: inline-block;
+}

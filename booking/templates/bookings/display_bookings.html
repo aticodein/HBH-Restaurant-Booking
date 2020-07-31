@@ -4,9 +4,10 @@
 
 {% block content %}
     {% for item in BookingItems %}
-    <h2>Restaurant Booking</h2><h4>{{ item.id }}</h4>
+    <h2>Restaurant Bookings</h2><h4>{{ item.id }}</h4>
     {% endfor %}
-    <a href="/add_booking"> Create New Booking</a>
+    
+    <a class="go-to-button btn btn-lg rounded-0 text-uppercase py-3" href="{% url 'add_booking' %}">Create New Booking</a>
     
     <table>
        {% for item in BookingItems %}

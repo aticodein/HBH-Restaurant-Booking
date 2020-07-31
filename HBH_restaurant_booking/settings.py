@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'home',
     'booking',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+CRISPY_CLASS_CONVERTERS = {'textinput': "textinput inputtext"}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
