@@ -3,9 +3,9 @@
 {% load static %}
 
 {% block content %}
-    <div class="place-holder"></div>
+<div class="place-holder"></div>
 <div class="container">   
-    <h2>Restaurant Bookings</h2><h4>{{ bookingItem.objects.count }}</h4>
+    <h2>Restaurant Bookings</h2>
 </div>
 <div class="container">
     <a class="go-to-button btn btn-lg rounded-0 text-uppercase py-3" href="{% url 'add_booking' %}">Create New Booking</a>
@@ -34,9 +34,9 @@
     <td>{{ item.highChair }}</td>
     <td>{{ item.comment }}</td>
     {% if item.email %}
-           <td>Email: {{ item.email }}</td>
+           <td>{{ item.email }}</td>
            {% else %}
-           <td>No email given.</td>
+           <td>No email</td>
            {% endif %}
     <td>
            
