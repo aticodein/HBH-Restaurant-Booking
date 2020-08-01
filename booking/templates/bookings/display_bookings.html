@@ -3,45 +3,42 @@
 {% load static %}
 
 {% block content %}
-    {% for item in BookingItems %}
-    <h2>Restaurant Bookings</h2><h4>{{ item.id }}</h4>
-    {% endfor %}
-    
+    <div class="place-holder"></div>
+<div class="container">   
+    <h2>Restaurant Bookings</h2><h4>{{ bookingItem.objects.count }}</h4>
+</div>
+<div class="container">
     <a class="go-to-button btn btn-lg rounded-0 text-uppercase py-3" href="{% url 'add_booking' %}">Create New Booking</a>
-    
-    <table>
-       {% for item in BookingItems %}
-          <tr>
-             <td>Booking Name: {{ item.name }}</td>
-          </tr>
-          <tr>
-            <td>Booking Date: {{ item.date }}</td>
-          </tr>
-          <tr>
-            <td>Booking Time: {{ item.time }}</td>
-          </tr>
-          <tr>
-           <td>Number of Adults: {{ item.adultNum }}</td>
-          </tr>
-          <tr>
-           <td>Number of Children: {{ item.childNum }}</td>
-          </tr>
-          <tr>
-           <td>Number of High Chair req.: {{ item.highChair }}</td>
-          </tr>
-          <tr>
-           <td>Room number: {{ item.roomNum }}</td>
-          </tr>
-          <tr>
-           <td>Comment: {{ item.comment }}</td>
-          </tr>
-          <tr>
-           {% if item.email %}
+</div>
+<div class="container">
+<table style="width:100%; background:white;">
+  <tr>
+    <th>Date</th>
+    <th>Time</th> 
+    <th>Name</th>
+    <th>Room Number</th>
+    <th>Adult Number</th> 
+    <th>Child Number</th>
+    <th>High Chair</th>
+    <th>Comment</th>
+    <th>Email</th> 
+  </tr>
+  {% for item in BookingItems %}
+  <tr>
+    <td>{{ item.date }}</td>
+    <td>{{ item.time }}</td>
+    <td>{{ item.name }}</td>
+    <td>{{ item.roomNum }}</td>
+    <td>{{ item.adultNum }}</td>
+    <td>{{ item.childNum }}</td>
+    <td>{{ item.highChair }}</td>
+    <td>{{ item.comment }}</td>
+    {% if item.email %}
            <td>Email: {{ item.email }}</td>
            {% else %}
            <td>No email given.</td>
            {% endif %}
-           <td>
+    <td>
            
              <a href="/edit_booking/{{ item.id }}">
              
@@ -57,8 +54,9 @@
              </a>
            
            </td>
-          </tr>
-       {% endfor %}
-    </table>
+  </tr>
+  {% endfor %}
+</table>
+</div>
 
 {% endblock %}

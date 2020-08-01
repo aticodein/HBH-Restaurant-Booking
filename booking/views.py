@@ -47,4 +47,3 @@ def delete_booking(request, bookingItem_id):
     item.delete()
 
     return redirect('display_bookings')
-

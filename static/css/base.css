@@ -102,3 +102,18 @@ body {
 .control-group {
     display: flex;
 }
+
+/* Placeholder div under navbar */
+
+.place-holder {
+    height: 180px;
+}
+
+.container {
+  display: flex; /* or inline-flex */
+  
+}
+
+.table {
+    background: whitesmoke;
+}
