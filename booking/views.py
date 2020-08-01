@@ -26,3 +26,25 @@ def add_booking(request):
         'form': form
     }
     return render(request, 'bookings/add_bookings.html', context)
+
+
+def edit_booking(request, bookingItem_id):
+    item = get_object_or_404(bookingItem, id=bookingItem_id)
+    if request.method == 'POST':
+        form = bookingItemForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('display_bookings')
+    form = bookingItemForm(instance=item)
+    context = {
+        'form': form
+    }
+    return render(request, 'bookings/edit_bookings.html', context)
+
+
+def delete_booking(request, bookingItem_id):
+    item = get_object_or_404(bookingItem, id=bookingItem_id)
+    item.delete()
+
+    return redirect('display_bookings')
+

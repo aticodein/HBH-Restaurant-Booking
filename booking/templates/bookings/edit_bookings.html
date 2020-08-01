@@ -1,0 +1,52 @@
+<!doctype html>
+
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block content %}
+    <div class="container h-100">
+    {% if request.user.is_authenticated %}
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                 <h4 class="display-5 logo-font text-white">Edit bookings</h4>
+    {% load crispy_forms_tags %}
+    <form method="POST">
+       {% csrf_token %}
+       {{ form|crispy }} 
+
+       <div>
+          <p>
+          <button type="submit" class="go-to-button btn btn-lg rounded-0 text-uppercase py-3 my-3">Update Booking</button>
+          </p>
+       </div>
+    </form>   
+                
+    {% else %}
+    <div class="my-5">
+        <div class="row h-100">
+            <div class="col-7 col-md-6 my-auto">
+                <h5 class="display-4 logo-font text-black"></h5>
+                <div class="my-5">
+                    <h4>
+                        <a href="{% url 'account_login' %}" class="go-to-button btn btn-lg rounded-0 text-uppercase py-3">Please Log In</a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        
+    </div>   
+    {% endif %}  
+    </div>
+{% endblock %}
+</div>
+</div>

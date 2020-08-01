@@ -26,5 +26,9 @@ urlpatterns = [
     path('', include('home.urls')),
     path('add_booking', views.add_booking, name='add_booking'),
     path('display_bookings/', views.display_bookings, name='display_bookings'),
+    path('edit_booking/<bookingItem_id>', views.edit_booking,
+         name='edit_booking'),
+    path('delete_booking/<bookingItem_id>', views.delete_booking,
+         name='delete_booking'),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
