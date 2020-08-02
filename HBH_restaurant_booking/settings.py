@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'home',
     'booking',
     'crispy_forms',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

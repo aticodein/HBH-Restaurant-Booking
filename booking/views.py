@@ -1,15 +1,29 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
+from django.db.models import Q
 from .models import bookingItem
 from .forms import bookingItemForm
-
 
 # Create your views here.
 
 
 def display_bookings(request):
-    BookingItems = bookingItem.objects.all()
+    BookingItems = bookingItem.objects.all().order_by('-date', 'time')
+    query = None
+
+    if request.GET:
+        if 'q' in request.GET:
+            query = request.GET['q']
+            if not query:
+                messages.error(request, 'You did not enter search')
+                return redirect(reverse('display_bookings'))
+
+            queries = Q(name__icontains=query) | Q(comment__icontains=query)
+            BookingItems = BookingItems.filter(queries)
+
     context = {
-        'BookingItems': BookingItems
+        'BookingItems': BookingItems,
+        'serch_term': query
     }
     return render(request, 'bookings/display_bookings.html', context)
 
