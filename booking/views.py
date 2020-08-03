@@ -8,6 +8,8 @@ from .forms import bookingItemForm
 
 
 def display_bookings(request):
+    childNum = bookingItem.objects.all()
+    allAdults = bookingItem.objects.all()
     BookingItems = bookingItem.objects.all().order_by('-date', 'time')
     query = None
 
@@ -18,12 +20,24 @@ def display_bookings(request):
                 messages.error(request, 'You did not enter search')
                 return redirect(reverse('display_bookings'))
 
-            queries = Q(name__icontains=query) | Q(comment__icontains=query)
+            queries = (Q(name__icontains=query) | Q(comment__icontains=query)
+                       | Q(roomNum__icontains=query))
+            BookingItems = BookingItems.filter(queries)
+
+        if 'date_search' in request.GET:
+            query = request.GET['date_search']
+            if not query:
+                messages.error(request, 'You did not enter search')
+                return redirect(reverse('display_bookings'))
+
+            queries = Q(date__icontains=query)
             BookingItems = BookingItems.filter(queries)
 
     context = {
+        'allAdults': allAdults,
         'BookingItems': BookingItems,
-        'serch_term': query
+        'serch_term': query,
+        'childNum': childNum,
     }
     return render(request, 'bookings/display_bookings.html', context)
 

@@ -12,9 +12,18 @@
                 All Bookings
             </a>
             <div class="dropdown-menu border-0" aria-labelledby="all-products-link">
-                <a href="" class="dropdown-item">By Date</a>
-                <a href="" class="dropdown-item ">By Time</a>
-                <a href="" class="dropdown-item ">By Room Number</a>
+                <a href="" class="dropdown-item">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card card-body">
+                                <form method="GET" action="{% url 'display_bookings' %}">
+                                <input class="form-control border border-black rounded-0" type="date" name="date_search" placeholder="date search">
+
+                                <button class="btn btn-black border border-black rounded-0" type="submit">Search Bookings by Date</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div></a>
                 <a href="{% url 'display_bookings' %}" class="dropdown-item">All Bookings</a>
             </div>
         </li>
