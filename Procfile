@@ -1,0 +1,1 @@
+web: gunicorn django_HBH_restaurant_booking.wsgi:application
