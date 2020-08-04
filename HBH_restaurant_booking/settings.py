@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'hbh_restaurant_booking.urls'
+ROOT_URLCONF = 'HBH_restaurant_booking.urls'
 
 TEMPLATES = [
     {
