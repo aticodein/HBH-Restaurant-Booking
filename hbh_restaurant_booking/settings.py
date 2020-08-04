@@ -21,12 +21,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')tlxh@pr43$expn*km0ycq$#qf-la9q_@nk8)alk969hrukq$d'
+SECRET_KEY = os.environ.get('SECRET_KEY', ')tlxh@pr43$expn*km0ycq$#qf-la9q_@nk8)alk969hrukq$d')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['https://hbh-restaurant-booking.herokuapp.com/']
+ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
 
 
 # Application definition
@@ -58,7 +58,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'HBH_restaurant_booking.urls'
+ROOT_URLCONF = 'hbh_restaurant_booking.urls'
 
 TEMPLATES = [
     {
