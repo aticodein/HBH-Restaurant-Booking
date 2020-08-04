@@ -26,7 +26,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', ')tlxh@pr43$expn*km0ycq$#qf-la9q_@nk8)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = [os.environ.get('HEROKU_HOSTNAME')]
+
+
 
 
 # Application definition
@@ -115,7 +118,7 @@ WSGI_APPLICATION = 'HBH_restaurant_booking.wsgi.application'
 # }
 
 DATABASES = {
-    'default': dj_database_url.parse('postgres://zjbcnkwjlkvhkb:a9b6b025714093e12552f5c439d5c204f56696457717e3816804b3680b2f96ae@ec2-18-203-62-227.eu-west-1.compute.amazonaws.com:5432/dd8gepaqc9kup9')
+    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 
