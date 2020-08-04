@@ -49,6 +49,7 @@
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
+            {% if request.user.is_authenticated %}
                 <form method="GET" action="{% url 'display_bookings' %}">
                     <div class="input-group w-100">
                         <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search for Name, Comment or Room number">
@@ -61,6 +62,7 @@
                         </div>
                     </div>
                 </form>
+            {% endif %}
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
                 <ul class="list-inline list-unstyled text-center text-lg-right my-0">
@@ -121,7 +123,7 @@
         </div>
     </header>
     
-    {% if message%}
+    {% if message %}
         <div class="message-container"></div>
     {% endif %}
 

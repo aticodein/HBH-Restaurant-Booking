@@ -8,9 +8,8 @@ from .forms import bookingItemForm
 
 
 def display_bookings(request):
-    childNum = bookingItem.objects.all()
-    allAdults = bookingItem.objects.all()
     BookingItems = bookingItem.objects.all().order_by('-date', 'time')
+
     query = None
 
     if request.GET:
@@ -34,11 +33,11 @@ def display_bookings(request):
             BookingItems = BookingItems.filter(queries)
 
     context = {
-        'allAdults': allAdults,
         'BookingItems': BookingItems,
         'serch_term': query,
-        'childNum': childNum,
+        'bookingItem.adultNum': bookingItem.adultNum,
     }
+    print(f"Ez van a contextben, ez megy az oldalra: {context} ****************************************")
     return render(request, 'bookings/display_bookings.html', context)
 
 
@@ -64,6 +63,7 @@ def edit_booking(request, bookingItem_id):
             form.save()
             return redirect('display_bookings')
     form = bookingItemForm(instance=item)
+    messages.error(request, 'You are editing this booking')
     context = {
         'form': form
     }
