@@ -21,7 +21,7 @@
                             <div class="card card-body">
                             {% load crispy_forms_tags %}
                                 <form method="GET" action="{% url 'display_bookings' %}" type="date">
-                                 
+                                 {{ date_input.date_field }}
                                  
                                 <input class="form-control border border-black rounded-0" type="date" name="date_search" placeholder="date search">
                                 <button class="btn btn-black border border-black rounded-0" type="submit">Search Bookings by Date</button>

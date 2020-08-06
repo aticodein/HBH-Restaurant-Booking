@@ -18,5 +18,9 @@ class bookingItemForm(forms.ModelForm):
         }
 
 
+class date_search(forms.DateInput):
+    input_type = 'date'
+
+
 class DateForm(forms.Form):
-    date_field = forms.DateField()
+    date_field = forms.DateField(widget=date_search)
