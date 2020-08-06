@@ -78,7 +78,7 @@
                         <div class="dropdown-menu border-0" aria-labelledby="user-options">
                             {% if request.user.is_authenticated %}
                                 {% if request.user.is_superuser %}
-                                    <a href="https://8000-af580f0c-cfe1-45c3-b99a-cdbb438422a9.ws-eu01.gitpod.io/admin/" class="dropdown-item" target="blank">Booking Management</a>
+                                    <a href="https://hbh-restaurant-booking.herokuapp.com/admin/" class="dropdown-item" target="blank">Booking Management</a>
                                 {% endif %}
                                 <a href="" class="dropdown-item">My Profile</a>
                                 <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>

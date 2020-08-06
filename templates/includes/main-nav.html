@@ -19,6 +19,7 @@
                     <div class="row">
                         <div class="col-12 col-lg-12">
                             <div class="card card-body">
+                            {% load crispy_forms_tags %}
                                 <form method="GET" action="{% url 'display_bookings' %}">
                                 <input class="form-control border border-black rounded-0" type="date" name="date_search" placeholder="date search">
 
