@@ -71,6 +71,7 @@ body {
 
 /* fixed top navbar only on medium and up */
 @media (min-width: 600px) {
+    
     .fixed-top-desktop-only {
         position: fixed;
         top: 0;
@@ -118,6 +119,7 @@ body {
     background: whitesmoke;
 }
 
-.label {
+.requiredField {
     background: whitesmoke;
 }
+

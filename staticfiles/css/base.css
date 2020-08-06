@@ -82,6 +82,9 @@ body {
     .header-container {
         padding-top: 164px;
     }
+    .card-body {
+        display: none;
+    }
 }
 
 /* Cerispy forms fields from setting class */
