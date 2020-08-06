@@ -117,3 +117,7 @@ body {
 .table {
     background: whitesmoke;
 }
+
+.requiredField {
+    background: whitesmoke;
+}
