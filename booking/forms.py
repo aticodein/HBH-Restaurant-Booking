@@ -16,3 +16,7 @@ class bookingItemForm(forms.ModelForm):
                                            'type': 'time',
                                     'placeholder': 'Use format!  18:30'})
         }
+
+
+class DateForm(forms.Form):
+    date_field = forms.DateField()
