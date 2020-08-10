@@ -1,4 +1,7 @@
 <!doctype html>
+<head>
+<title>All Bookings</title>
+</head>
 {% extends "base.html"%}
 {% load static %}
 
@@ -11,7 +14,6 @@
 <div class="container">
     <a class="go-to-button btn btn-lg rounded-0 text-uppercase py-3 mx-3" href="{% url 'add_booking' %}">Create New Booking</a>
 </div>
-<div class="container">
 
 <!--<div id="all_adults" class="adult-number container" style="width:100%">Adults numbers: 
 
@@ -35,17 +37,17 @@
   
 
 <div class="container">
-<table style="width:100%; background:white;" class="mx-3">
+<table id="sum_table" style="width:100%; background:white;" class="mx-3">
   <tr>
     <th>Date</th>
     <th>Time</th> 
     <th>Name</th>
     <th>Room Number</th>
-    <th>Adult Number</th> 
+    <th>Adult Number</th>
     <th>Child Number</th>
     <th>High Chair</th>
     <th>Comment</th>
-    <th class="d-none">Email</th> 
+    <th class="d-none">Email</th>
   </tr>
   {% for item in BookingItems %}
   <tr>
@@ -53,10 +55,11 @@
     <td>{{ item.time|time:"H:i" }}</td>
     <td>{{ item.name }}</td>
     <td>{{ item.roomNum }}</td>
-    <td>{{ item.adultNum }}</td>
-    <td>{{ item.childNum }}</td>
+    <td class="adults customers" >{{ item.adultNum }}</td>
+    <td class="children customers" >{{ item.childNum }}</td>
     <td>{{ item.highChair }}</td>
     <td>{{ item.comment }}</td>
+    
     {% if item.email %}
            <td class="d-none">{{ item.email }}</td>
            {% else %}
@@ -83,8 +86,63 @@
            {% endif %}
   </tr>
   {% endfor %}
+  <tr>
+    <th id="totalAdults" ></th> 
+  </tr>
 </table>
 </div>
+
+<script>
+
+var sum = 0;
+var table = document.getElementById("sum_table");
+var ths = table.getElementsByTagName('th');
+var tds = table.getElementsByClassName('adults');
+for(var i=0;i<tds.length;i++){
+	sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+}
+
+var row = table.insertRow(table.rows.length);
+var cell = row.insertCell(0);
+cell.setAttribute('colspan', ths.length);
+
+var totalBalance  = document.createTextNode('Adults Total= ' + sum);
+cell.appendChild(totalBalance);
+
+
+var sum = 0;
+var table = document.getElementById("sum_table");
+var ths = table.getElementsByTagName('th');
+var tds = table.getElementsByClassName('children');
+for(var i=0;i<tds.length;i++){
+	sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+}
+
+var row = table.insertRow(table.rows.length);
+var cell = row.insertCell(0);
+cell.setAttribute('colspan', ths.length);
+
+var totalBalance  = document.createTextNode('Children Total= ' + sum);
+cell.appendChild(totalBalance);
+
+
+var sum = 0;
+var table = document.getElementById("sum_table");
+var ths = table.getElementsByTagName('th');
+var tds = table.getElementsByClassName('customers');
+for(var i=0;i<tds.length;i++){
+	sum += isNaN(tds[i].innerText) ? 0 : parseInt(tds[i].innerText);
+}
+
+var row = table.insertRow(table.rows.length);
+var cell = row.insertCell(0);
+cell.setAttribute('colspan', ths.length);
+
+var totalBalance  = document.createTextNode('Grand Total= ' + sum);
+cell.appendChild(totalBalance);
+
+
+</script>
 
 
 {% endblock %}

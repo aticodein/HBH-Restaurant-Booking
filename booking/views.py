@@ -37,6 +37,7 @@ def display_bookings(request):
         'serch_term': query,
         'bookingItem.adultNum': bookingItem.adultNum,
     }
+
     print(f"Ez van a contextben, ez megy az oldalra: {context} *********")
     return render(request, 'bookings/display_bookings.html', context)
 
