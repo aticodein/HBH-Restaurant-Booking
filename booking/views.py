@@ -3,6 +3,8 @@ from django.contrib import messages
 from django.db.models import Q
 from .models import bookingItem
 from .forms import bookingItemForm
+from django.core.exceptions import ValidationError
+from django import forms
 
 # Create your views here.
 
@@ -27,6 +29,7 @@ def display_bookings(request):
             query = request.GET['date_search']
             if not query:
                 messages.error(request, 'You did not enter search')
+                ValidationError(request, 'You did not enter search')
                 return redirect(reverse('display_bookings'))
 
             queries = Q(date__icontains=query)
@@ -38,20 +41,22 @@ def display_bookings(request):
         'bookingItem.adultNum': bookingItem.adultNum,
     }
 
-    print(f"Ez van a contextben, ez megy az oldalra: {context} *********")
+    print(f"***Ez van a contextben, ez megy az oldalra: {bookingItem.adultNum} ***")
+
     return render(request, 'bookings/display_bookings.html', context)
 
 
 def add_booking(request):
     if request.method == 'POST':
         form = bookingItemForm(request.POST)
+        
         if form.is_valid():
             form.save()
             return redirect('display_bookings')
 
     form = bookingItemForm()
     context = {
-        'form': form
+        'form': form,
     }
     return render(request, 'bookings/add_bookings.html', context)
 

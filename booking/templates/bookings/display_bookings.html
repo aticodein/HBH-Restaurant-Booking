@@ -6,6 +6,19 @@
 {% load static %}
 
 {% block content %}
+
+{% if messages %}
+    <div>
+      <strong>Messages:</strong>
+      <ul>
+        {% for message in messages %}
+        <li>{{message}}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+
 <div class="place-holder"></div>
 <div class="container">   
     <h2 class="mx-3">Restaurant Bookings</h2>
