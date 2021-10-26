@@ -2,3 +2,7 @@ image:
   file: .gitpod.dockerfile
 tasks:
  - init: . ${GITPOD_REPO_ROOT}/.theia/init_tasks.sh    
+ - command: python3 run
+ports:
+  - port: 8080
+    onOpen: open-preview
